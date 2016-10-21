@@ -4,7 +4,7 @@ var router = express.Router();
 var Store = require('../models/store');
 
 // router.use(function (req, res, next) {
-//   req.body = _.pick(req.body, ['name','inventory', 'foods'])
+//   req.body = _.pick(req.body, ['name','inventory', 'type'])
 //   next()
 // })
 
