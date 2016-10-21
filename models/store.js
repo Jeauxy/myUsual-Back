@@ -8,5 +8,5 @@ var storeSchema = {
   address: String
 }
 
-var Store = mongoose.models('Store', storeSchema);
-modules.export = Store;
+var Store = mongoose.model('Store', storeSchema);
+module.exports = Store;
