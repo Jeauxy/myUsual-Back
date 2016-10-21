@@ -11,5 +11,5 @@ var userSchema = {
   //role: [{}],
 }
 
-var User = mongoose.models('User', userSchema);
-modules.export = User;
+var User = mongoose.model('User', userSchema);
+module.exports = User;

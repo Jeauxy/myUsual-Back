@@ -9,5 +9,5 @@ var foodSchema = {
   picture: String
 }
 
-var Food = mongoose.models('Food', foodSchema);
-modules.export = Food;
+var Food = mongoose.model('Food', foodSchema);
+module.exports = Food;
