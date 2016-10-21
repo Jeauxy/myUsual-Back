@@ -7,7 +7,7 @@ var userSchema = {
   price: Number,
   userId: String,
   avatar: String,
-  source: String,
+  source: String
   //role: [{}],
 }
 
