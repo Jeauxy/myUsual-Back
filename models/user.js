@@ -7,9 +7,9 @@ var userSchema = {
   price: Number,
   userId: String,
   avatar: String,
-  source: String,
+  source: String
   //role: [{}],
 }
 
-var User = mongoose.models('User', userSchema);
-modules.export = User;
+var User = mongoose.model('User', userSchema);
+module.exports = User;
