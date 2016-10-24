@@ -4,7 +4,7 @@ var _ = require('lodash');
 var Food = require("../models/food");
 
 router.use('/', function (req, res, next) {
-  req.body = _.pick(req.body, ['itemName', 'description', 'price'])
+  req.body = _.pick(req.body, ['itemName', 'description', 'price', 'avgQuantityPurchased', 'stores'])
   next();
 })
 
@@ -20,7 +20,8 @@ router.get('/', function (req, res) {
 
 
 router.post('/', function (req, res) {
-  var food = new Food(req.body)
+  var food = new Food(req.body);
+  console.log(req.body);
   food.save(function (err) {
     if (err) {
       res.status(500).send()

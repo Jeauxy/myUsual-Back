@@ -3,6 +3,7 @@ var router = express.Router();
 // var _ = require('lodash');
 var Store = require('../models/store');
 
+
 // router.use(function (req, res, next) {
 //   req.body = _.pick(req.body, ['name','inventory', 'type'])
 //   next()
