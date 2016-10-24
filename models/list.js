@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 var listSchema = {
+  listOwner:[{type:mongoose.Schema.Types.ObjectId, ref: "User"}],
   listName: String,
   foods: [{type:mongoose.Schema.Types.ObjectId, ref : "Food"}]
 }
