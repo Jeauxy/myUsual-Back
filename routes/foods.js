@@ -50,7 +50,7 @@ router.get('/:id', function (req, res) {
 
 router.put('/:id', function (req, res) {
   var updatedFood = Object.assign(res.food, req.body)
-  updatedUser.save(function (err) {
+  updatedFood.save(function (err) {
     if (err) {
       res.status(500).send()
     } else {
