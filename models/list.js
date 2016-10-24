@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var listSchema = {
   listName: String,
-  foods: []
+  foods: [{type:mongoose.Schema.Types.ObjectId, ref : "Food"}]
 }
 
 var List = mongoose.model("List", listSchema);
