@@ -4,7 +4,7 @@ var _ = require('lodash');
 var List = require("../models/list");
 
 router.use('/', function (req, res, next) {
-  req.body = _.pick(req.body, [])
+  req.body = _.pick(req.body, ['listName', 'foods'])
   next();
 })
 
