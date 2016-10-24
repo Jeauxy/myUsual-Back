@@ -7,7 +7,8 @@ var userSchema = {
   price: Number,
   userId: String,
   avatar: String,
-  source: String
+  source: String,
+  lists: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}],
   //role: [{}],
 }
 

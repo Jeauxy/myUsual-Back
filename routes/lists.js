@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 var _ = require('lodash');
 var List = require("../models/list");
+var foods = require('./foods');
 
 router.use('/', function (req, res, next) {
   req.body = _.pick(req.body, ['listName', 'foods'])
   next();
 })
+
 
 router.get('/', function (req, res) {
   List.find({}, function (err, lists) {
@@ -44,9 +46,13 @@ router.use('/:id', function (req, res, next) {
   })
 })
 
+
 router.get('/:id', function (req, res) {
   res.json(res.list)
 })
+
+router.use('/:id/foods', foods);
+
 
 router.put('/:id', function (req, res) {
   var updatedList = Object.assign(res.list, req.body)
