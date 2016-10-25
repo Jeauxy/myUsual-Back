@@ -23,6 +23,8 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
   var list = new List(req.body)
+  // list.userId = req.user.sub;
+  // console.log(list);
   list.save(function (err) {
     if (err) {
       res.status(500).send()

@@ -4,7 +4,7 @@ var _ = require('lodash');
 var User = require("../models/user");
 
 router.use(function (req, res, next) {
-  req.body = _.pick(req.body, ['firstName', 'lastName', 'email'])
+  req.body = _.pick(req.body, ['firstName', 'lastName', 'userId', 'email'])
   next()
 })
 
@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
 
 
 router.use('/:id', function (req, res, next) {
-  User.findOne({ '_id': req.params.id }, function (err, user) {
+  User.findOne({ 'user_id': req.params.id }, function (err, user) {
     if (err) {
       res.status(500).send()
     } else if (!user) {
