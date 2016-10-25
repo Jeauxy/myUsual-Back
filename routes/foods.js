@@ -30,7 +30,21 @@ router.post('/', function (req, res) {
     }
   })
 })
-
+router.get('/:listid', function (req, res, next) {
+  //console.log(req.params.listid);
+  Food.find({ 'lists': req.params.listid }, function (err, foods) {
+    if (err) {
+      res.status(500).send()
+    } else if (!foods) {
+      res.status(404).send()
+      next()
+    } else {
+      res.listfoods = foods;
+      res.json(res.listfoods);
+      next()
+    }
+  })
+})
 
 router.use('/:id', function (req, res, next) {
   Food.findOne({ '_id': req.params.id }, function (err, food) {
