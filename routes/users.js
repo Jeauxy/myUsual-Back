@@ -4,7 +4,7 @@ var _ = require('lodash');
 var User = require("../models/user");
 
 router.use(function (req, res, next) {
-  req.body = _.pick(req.body, ['firstName', 'lastName', 'email'])
+  req.body = _.pick(req.body, ['firstName', 'lastName', 'email', 'userId'])
   next()
 })
 
