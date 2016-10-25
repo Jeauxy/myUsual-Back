@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
 
 
 router.use('/:id', function (req, res, next) {
-  User.findOne({ 'user_id': req.params.id }, function (err, user) {
+  User.findOne({ 'userId': req.params.id }, function (err, user) {
     if (err) {
       res.status(500).send()
     } else if (!user) {
