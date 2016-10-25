@@ -5,7 +5,7 @@ var foodSchema = {
   description: String,
   price: Number,
   stores: [{type: mongoose.Schema.Types.ObjectId, ref: 'Store'}],
-  //lists: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}],
+  lists: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}],
   avgQuantityPurchased: Number,
   picture: String
 }
