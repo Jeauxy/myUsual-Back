@@ -11,7 +11,7 @@ router.use('/', function (req, res, next) {
 
 
 router.get('/', function (req, res) {
-  List.find({listOwner:req.user.sub}, function (err, lists) {
+  List.find({}, function (err, lists) {
     if (err) {
       res.status(500).send()
     } else {
