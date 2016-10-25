@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 var listSchema = {
-  listOwner:String,
+  listOwner: String,
   listName: String,
   foods: [{type:mongoose.Schema.Types.ObjectId, ref : "Food"}]
 }
