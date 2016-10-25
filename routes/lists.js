@@ -11,6 +11,8 @@ router.use('/', function (req, res, next) {
 
 
 router.get('/', function (req, res) {
+  console.log(req.user);
+  // List.find{ listOwner: req.user.sub}, function (err, lists) {
   List.find({}, function (err, lists) {
     if (err) {
       res.status(500).send()
@@ -23,9 +25,6 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
   var list = new List(req.body)
-  console.log(list);
-  // list.userId = req.user.sub;
-  // console.log(list);
   list.save(function (err) {
     if (err) {
       res.status(500).send()
