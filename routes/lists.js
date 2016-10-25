@@ -5,7 +5,7 @@ var List = require("../models/list");
 var foods = require('./foods');
 
 router.use('/', function (req, res, next) {
-  req.body = _.pick(req.body, ['listName', 'foods'])
+  req.body = _.pick(req.body, ['listName', 'foods', 'listOwner'])
   next();
 })
 
@@ -23,6 +23,7 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
   var list = new List(req.body)
+  console.log(list);
   // list.userId = req.user.sub;
   // console.log(list);
   list.save(function (err) {
