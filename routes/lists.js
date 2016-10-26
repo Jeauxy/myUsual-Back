@@ -25,7 +25,7 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
   var list = new List(req.body)
-  list.listOwner = req.user.sub;
+  // list.listOwner = req.user.sub;
   list.save(function (err) {
     if (err) {
       res.status(500).send()
