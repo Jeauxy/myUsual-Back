@@ -77,17 +77,21 @@ router.delete('/:id', function (req, res) {
   })
 })
 
-router.get('/sharedLists', function (req, res, next) {
+router.use('/sharedLists', function (req, res, next) {
     List.find({sharedOwners: req.user.sub}, function (err, lists) {
         if (err) {
           res.status(500).send()
         } else if (!lists) {
           res.status(404).send()
         } else {
-          res.json(lists)
+          res.lists = lists
+          next();
         }
     })
 })
 
+router.get('/sharedLists', function (req,res) {
+  res.json(res.lists);
+})
 
 module.exports = router;
