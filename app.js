@@ -12,8 +12,14 @@ var users = require('./routes/users');
 var stores = require('./routes/stores');
 var foods = require('./routes/foods');
 var lists = require('./routes/lists')
+var jwt = require('express-jwt');
 
 var app = express();
+
+var jwtCheck = jwt({
+  secret: new Buffer(process.env.CLIENT_ID, 'base64'),
+  audience: process.env.CLIENT_SECRET
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +39,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/stores', stores);
 app.use('/foods', foods);
-app.use('/lists', lists);
+app.use('/lists', jwtCheck, lists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
