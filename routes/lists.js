@@ -5,7 +5,7 @@ var List = require("../models/list");
 var foods = require('./foods');
 
 router.use('/', function (req, res, next) {
-  req.body = _.pick(req.body, ['listName', 'foods', 'listOwner'])
+  req.body = _.pick(req.body, ['listName', 'foods', 'listOwner', 'sharedOwners'])
   next();
 })
 
@@ -21,6 +21,17 @@ router.get('/', function (req, res) {
   });
 });
 
+router.get('/sharedLists', function (req, res) {
+    List.find({sharedOwners: req.user.sub}, function (err, lists) {
+        if (err) {
+          console.log(err);
+          res.status(500).send()
+        } else {
+           res.json(lists)
+        }
+    })
+});
+
 
 router.post('/', function (req, res) {
   var list = new List(req.body)
@@ -33,6 +44,7 @@ router.post('/', function (req, res) {
     }
   })
 })
+
 
 
 router.use('/:id', function (req, res, next) {
@@ -75,24 +87,6 @@ router.delete('/:id', function (req, res) {
       res.status(204).send()
     }
   })
-})
-
-router.use('/sharedLists', function (req, res, next) {
-  console.log(req.user.sub);
-    List.find({sharedOwners: req.user.sub}, function (err, lists) {
-        if (err) {
-          res.status(500).send()
-        } else if (!lists) {
-          res.status(404).send()
-        } else {
-          res.lists = lists
-          next();
-        }
-    })
-})
-
-router.get('/sharedLists', function (req,res) {
-  res.json(res.lists);
 })
 
 module.exports = router;
