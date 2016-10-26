@@ -18,6 +18,16 @@ router.get('/', function (req, res) {
   });
 });
 
+router.get('/shareLists', function (req, res) {
+    User.find({userId: !req.user.sub}, function (err, users) {
+      if (err) {
+        res.status(500).send()
+      } else {
+        res.json(users)
+      }
+    })
+})
+
 
 router.post('/', function (req, res) {
   var user = new User(req.body)
