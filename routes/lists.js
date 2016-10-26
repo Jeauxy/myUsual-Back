@@ -13,7 +13,6 @@ router.use('/', function (req, res, next) {
 router.get('/', function (req, res) {
   console.log(req.user);
   List.find({listOwner: req.user.sub}, function (err, lists) {
-  // List.find({}, function (err, lists) {
     if (err) {
       res.status(500).send()
     } else {
@@ -77,5 +76,18 @@ router.delete('/:id', function (req, res) {
     }
   })
 })
+
+router.get('/sharedLists', function (req, res, next) {
+    List.find({sharedOwners: req.user.sub}, function (err, lists) {
+        if (err) {
+          res.status(500).send()
+        } else if (!lists) {
+          res.status(404).send()
+        } else {
+          res.json(lists)
+        }
+    })
+})
+
 
 module.exports = router;

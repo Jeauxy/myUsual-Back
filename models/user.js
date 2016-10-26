@@ -9,6 +9,7 @@ var userSchema = {
   avatar: String,
   source: String,
   lists: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}],
+  listsSharedWithMe: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}]
   //role: [{}],
 }
 
