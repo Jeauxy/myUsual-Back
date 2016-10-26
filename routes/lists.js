@@ -78,6 +78,7 @@ router.delete('/:id', function (req, res) {
 })
 
 router.use('/sharedLists', function (req, res, next) {
+  console.log(req.user.sub);
     List.find({sharedOwners: req.user.sub}, function (err, lists) {
         if (err) {
           res.status(500).send()
