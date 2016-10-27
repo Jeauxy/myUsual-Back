@@ -11,8 +11,8 @@ router.use('/', function (req, res, next) {
 
 
 router.get('/', function (req, res) {
-  console.log(req.user);
-  List.find({listOwner: req.user.sub}, function (err, lists) {
+  // console.log(req.user);
+  List.find({/*listOwner: req.user.sub*/}, function (err, lists) {
     if (err) {
       res.status(500).send()
     } else {
@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/sharedLists', function (req, res) {
-    List.find({sharedOwners: req.user.sub}, function (err, lists) {
+    List.find({/*sharedOwners: req.user.sub*/}, function (err, lists) {
         if (err) {
           console.log(err);
           res.status(500).send()
@@ -35,7 +35,7 @@ router.get('/sharedLists', function (req, res) {
 
 router.post('/', function (req, res) {
   var list = new List(req.body)
-  list.listOwner = req.user.sub;
+  // list.listOwner = req.user.sub;
   list.save(function (err) {
     if (err) {
       res.status(500).send()
