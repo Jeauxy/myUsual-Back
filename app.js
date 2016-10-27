@@ -40,7 +40,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/stores', stores);
 app.use('/foods', foods);
-app.use('/lists', /*jwtCheck,*/ lists);
+app.use('/lists', jwtCheck, lists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
