@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', routes);
-app.use('/users', jwtCheck, users);
+app.use('/users', users);
 app.use('/stores', jwtCheck, stores);
 app.use('/foods', jwtCheck, foods);
 app.use('/lists', jwtCheck, lists);
