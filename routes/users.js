@@ -6,7 +6,7 @@ var User = require("../models/user");
 router.use(function (req, res, next) {
   req.body = _.pick(req.body, ['firstName', 'lastName', 'userId', 'email'])
   next()
-})
+});
 
 router.get('/', function (req, res) {
   User.find({}, function (err, users) {
@@ -19,14 +19,14 @@ router.get('/', function (req, res) {
 });
 
 router.get('/shareLists', function (req, res) {
-    User.find({userId: !req.user.sub}, function (err, users) {
-      if (err) {
-        res.status(500).send()
-      } else {
-        res.json(users)
-      }
-    })
-})
+  User.find({userId: !req.user.sub}, function (err, users) {
+    if (err) {
+      res.status(500).send()
+    } else {
+      res.json(users)
+    }
+  })
+});
 
 
 router.post('/', function (req, res) {
@@ -38,7 +38,7 @@ router.post('/', function (req, res) {
       res.json(user)
     }
   })
-})
+});
 
 
 router.use('/:id', function (req, res, next) {
@@ -52,11 +52,11 @@ router.use('/:id', function (req, res, next) {
       next()
     }
   })
-})
+});
 
 router.get('/:id', function (req, res) {
   res.json(res.user)
-})
+});
 
 router.put('/:id', function (req, res) {
   var updatedUser = Object.assign(res.user, req.body)
@@ -67,7 +67,7 @@ router.put('/:id', function (req, res) {
       res.json(updatedUser)
     }
   })
-})
+});
 
 router.delete('/:id', function (req, res) {
   res.user.remove(function (err) {
@@ -77,6 +77,6 @@ router.delete('/:id', function (req, res) {
       res.status(204).send()
     }
   })
-})
+});
 
 module.exports = router;

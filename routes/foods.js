@@ -6,7 +6,7 @@ var Food = require("../models/food");
 router.use('/', function (req, res, next) {
   req.body = _.pick(req.body, ['itemName', 'description', 'price', 'avgQuantityPurchased', 'lists', 'stores'])
   next();
-})
+});
 
 router.get('/', function (req, res) {
   Food.find({}, function (err, foods) {
@@ -29,7 +29,8 @@ router.post('/', function (req, res) {
       res.json(food)
     }
   })
-})
+});
+
 router.get('/:listid', function (req, res, next) {
   //console.log(req.params.listid);
   Food.find({ 'lists': req.params.listid }, function (err, foods) {
@@ -44,7 +45,7 @@ router.get('/:listid', function (req, res, next) {
       next()
     }
   })
-})
+});
 
 router.use('/:id', function (req, res, next) {
   Food.findOne({ '_id': req.params.id }, function (err, food) {
@@ -57,11 +58,11 @@ router.use('/:id', function (req, res, next) {
       next()
     }
   })
-})
+});
 
 router.get('/:id', function (req, res) {
   res.json(res.food)
-})
+});
 
 router.put('/:id', function (req, res) {
   var updatedFood = Object.assign(res.food, req.body)
@@ -72,7 +73,7 @@ router.put('/:id', function (req, res) {
       res.json(updatedFood)
     }
   })
-})
+});
 
 router.delete('/:id', function (req, res) {
   res.food.remove(function (err) {
@@ -82,6 +83,6 @@ router.delete('/:id', function (req, res) {
       res.status(204).send()
     }
   })
-})
+});
 
 module.exports = router;
