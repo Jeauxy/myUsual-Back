@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
     } else {
       res.json(users)
     }
-  });
+  })
 });
 
 router.get('/shareLists', function (req, res) {
@@ -28,7 +28,6 @@ router.get('/shareLists', function (req, res) {
   })
 });
 
-
 router.post('/', function (req, res) {
   var user = new User(req.body)
   user.save(function (err) {
@@ -39,7 +38,6 @@ router.post('/', function (req, res) {
     }
   })
 });
-
 
 router.use('/:id', function (req, res, next) {
   User.findOne({ 'userId': req.params.id }, function (err, user) {

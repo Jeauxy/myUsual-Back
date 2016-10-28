@@ -19,7 +19,6 @@ router.get('/', function (req, res) {
   })
 });
 
-
 router.post('/', function (req, res) {
   var store = new Store(req.body)
   store.save(function (err) {
@@ -30,7 +29,6 @@ router.post('/', function (req, res) {
     }
   })
 });
-
 
 router.use('/:id', function (req, res, next) {
   Store.findOne({ '_id': req.params.id }, function (err, store) {

@@ -24,7 +24,6 @@ router.use('/', function (req, res, next) {
   next();
 });
 
-
 router.get('/', function (req, res) {
   // console.log(req.user);
   List.find({listOwner: req.user.sub}, function (err, lists) {
@@ -47,7 +46,6 @@ router.get('/sharedLists', function (req, res) {
   })
 });
 
-
 router.post('/', function (req, res) {
   var list = new List(req.body)
   list.listOwner = req.user.sub;
@@ -59,8 +57,6 @@ router.post('/', function (req, res) {
     }
   })
 });
-
-
 
 router.use('/:id', function (req, res, next) {
   List.findOne({ '_id': req.params.id }, function (err, list) {
@@ -75,13 +71,11 @@ router.use('/:id', function (req, res, next) {
   })
 });
 
-
 router.get('/:id', function (req, res) {
   res.json(res.list)
 });
 
 router.use('/:id/foods', foods);
-
 
 router.put('/:id', function (req, res) {
   var updatedList = Object.assign(res.list, req.body)
