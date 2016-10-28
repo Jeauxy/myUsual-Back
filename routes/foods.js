@@ -15,9 +15,8 @@ router.get('/', function (req, res) {
     } else {
       res.json(foods)
     }
-  });
+  })
 });
-
 
 router.post('/', function (req, res) {
   var food = new Food(req.body);

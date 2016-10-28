@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var _ = require('lodash');
-var List = require("../models/list");
+var List = require('../models/list');
 var foods = require('./foods');
 
 // Add headers

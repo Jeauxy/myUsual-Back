@@ -11,7 +11,7 @@ var userSchema = {
   lists: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}],
   listsSharedWithMe: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}]
   //role: [{}],
-}
+};
 
 var User = mongoose.model('User', userSchema);
 module.exports = User;

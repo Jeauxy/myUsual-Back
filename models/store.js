@@ -6,7 +6,7 @@ var storeSchema = {
   type: String,
   address: String,
   foods: [{type: mongoose.Schema.Types.ObjectId, ref: 'Food'}]
-}
+};
 
 var Store = mongoose.model('Store', storeSchema);
 module.exports = Store;
