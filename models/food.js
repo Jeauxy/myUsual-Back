@@ -8,7 +8,7 @@ var foodSchema = {
   lists: [{type: mongoose.Schema.Types.ObjectId, ref: 'List'}],
   avgQuantityPurchased: Number,
   picture: String
-}
+};
 
 var Food = mongoose.model('Food', foodSchema);
 module.exports = Food;
