@@ -29,7 +29,7 @@ router.post('/', function (req, res) {
       res.json(store)
     }
   })
-})
+});
 
 
 router.use('/:id', function (req, res, next) {
@@ -43,11 +43,11 @@ router.use('/:id', function (req, res, next) {
       next()
     }
   })
-})
+});
 
 router.get('/:id', function (req, res) {
   res.json(res.store)
-})
+});
 
 router.put('/:id', function (req, res) {
   var updatedStore = Object.assign(res.store, req.body)
@@ -58,7 +58,7 @@ router.put('/:id', function (req, res) {
       res.json(updatedStore)
     }
   })
-})
+});
 
 router.delete('/:id', function (req, res) {
   res.store.remove(function (err) {
@@ -68,6 +68,6 @@ router.delete('/:id', function (req, res) {
       res.status(204).send()
     }
   })
-})
+});
 
 module.exports = router;
